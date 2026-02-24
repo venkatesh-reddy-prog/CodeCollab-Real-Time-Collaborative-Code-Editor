@@ -1,0 +1,3 @@
+com\codecollab\model\CodeSnapshot.class
+com\codecollab\model\Room.class
+com\codecollab\repository\RoomRepository.class

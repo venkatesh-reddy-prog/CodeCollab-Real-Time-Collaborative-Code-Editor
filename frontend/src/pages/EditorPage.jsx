@@ -8,7 +8,7 @@ export default function EditorPage() {
   const [code, setCode] = useState("// Start coding...");
 
   useEffect(() => {
-    connectSocket((message) => {
+    connectSocket(roomId, (message) => {
       if (message.roomId === roomId) {
         setCode(message.code);
       }

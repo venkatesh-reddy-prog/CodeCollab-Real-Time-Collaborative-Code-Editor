@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:8080/auth";
+const API = "http://localhost:8080/api/auth";  // add /api/
 
 export const registerUser = (user) => {
   return axios.post(`${API}/register`, user);

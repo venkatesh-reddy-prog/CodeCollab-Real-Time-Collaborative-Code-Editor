@@ -5,6 +5,7 @@ import com.codecollab.service.EditorService;
 import com.codecollab.websocket.CodeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.*;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +17,18 @@ import java.util.List;
 public class EditorController {
 
     private final EditorService editorService;
+    private final SimpMessagingTemplate messagingTemplate;
 
-    // 🔴 Real-time WebSocket Sync
     @MessageMapping("/edit")
-    @SendTo("/topic/code")
-    public CodeMessage syncCode(CodeMessage message) {
+    public void syncCode(CodeMessage message) {
         editorService.saveSnapshot(message.getRoomId(), message.getCode());
-        return message;
+        messagingTemplate.convertAndSend(
+            "/topic/code/" + message.getRoomId(), 
+            message
+        );
     }
 
-    // 📜 REST API to fetch history
-    @GetMapping("/history/{roomId}")
+    @GetMapping("/api/history/{roomId}")
     @ResponseBody
     public List<CodeSnapshot> getHistory(@PathVariable String roomId) {
         return editorService.getHistory(roomId);

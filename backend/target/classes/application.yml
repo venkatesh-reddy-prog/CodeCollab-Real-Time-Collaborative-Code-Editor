@@ -1,20 +1,20 @@
-server:
-  port: 8080
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/codecollab
     username: postgres
-    password: root
+    password: postgres123
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  redis:
-    host: localhost
-    port: 6379
+server:
+  port: 8080
 
 jwt:
-  secret: mysecretkey123
+  secret: codecollab-secret-key
   expiration: 86400000

@@ -51,6 +51,8 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowedOrigins(List.of(
+            "http://localhost:3000",
+            "https://code-collab-real-time-collaborative.vercel.app",
             "https://code-collab-real-time-collaborative.vercel.app"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));

@@ -8,7 +8,7 @@ export const connectSocket = (roomId, onMessageReceived) => {
   }
 
   stompClient = new Client({
-    brokerURL: "ws://localhost:8080/ws/websocket",
+    brokerURL: "wss://codecollab-backend-twvl.onrender.com/ws/websocket",
     reconnectDelay: 5000,
     onConnect: () => {
       console.log("✅ WebSocket connected, subscribing to room:", roomId);

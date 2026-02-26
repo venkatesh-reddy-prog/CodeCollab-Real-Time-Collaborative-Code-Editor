@@ -7,9 +7,9 @@ const BASE_URL =
 const API = `${BASE_URL}/api/auth`;
 
 export const registerUser = (user) => {
-  return axios.post(`${API}/register`, user);
+  return axios.post(`${API}/register`, user, { withCredentials: true });
 };
 
 export const loginUser = (credentials) => {
-  return axios.post(`${API}/login`, credentials);
+  return axios.post(`${API}/login`, credentials, { withCredentials: true });
 };

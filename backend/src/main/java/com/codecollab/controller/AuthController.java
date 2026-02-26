@@ -5,24 +5,33 @@ import com.codecollab.dto.LoginRequest;
 import com.codecollab.model.User;
 import com.codecollab.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin
 public class AuthController {
 
     private final AuthService authService;
 
     @PostMapping("/register")
-    public String register(@RequestBody User user) {
-        authService.register(user);
-        return "User registered successfully";
+    public ResponseEntity<String> register(@RequestBody User user) {
+        try {
+            authService.register(user);
+            return ResponseEntity.ok("User registered successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody LoginRequest request) {
-        return authService.login(request);
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        try {
+            AuthResponse response = authService.login(request);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

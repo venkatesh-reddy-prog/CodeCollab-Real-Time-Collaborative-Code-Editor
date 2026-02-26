@@ -11,12 +11,14 @@ com\codecollab\model\User.class
 com\codecollab\dto\LoginRequest.class
 com\codecollab\config\CorsConfig$1.class
 com\codecollab\controller\EditorController.class
+com\codecollab\controller\RootController.class
 com\codecollab\model\Room.class
 com\codecollab\service\AuthService.class
 com\codecollab\config\CorsConfig.class
 com\codecollab\service\EditorService.class
 com\codecollab\repository\SnapshotRepository.class
 com\codecollab\websocket\CursorMessage.class
+com\codecollab\controller\HealthController.class
 com\codecollab\dto\AuthResponse.class
 com\codecollab\security\CustomUserDetailsService.class
 com\codecollab\CodeCollabApplication.class

@@ -1,0 +1,29 @@
+.editor-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0f172a;
+}
+
+.editor-header {
+  height: 60px;
+  background: #020617;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  font-weight: bold;
+  border-bottom: 1px solid #1e293b;
+}
+
+.room-badge {
+  background: #334155;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.editor-body {
+  flex: 1;
+}

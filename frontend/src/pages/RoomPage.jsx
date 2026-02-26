@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createRoom } from "../api/roomApi";
+import "./RoomPage.css";
 
 export default function RoomPage() {
   const [roomId, setRoomId] = useState("");
@@ -22,15 +23,28 @@ export default function RoomPage() {
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Rooms</h2>
-      <button onClick={handleCreateRoom}>Create Room</button>
-      <br/><br/>
-      <input 
-        placeholder="Enter Room Code" 
-        onChange={(e) => setRoomId(e.target.value)} 
-      />
-      <button onClick={joinRoom}>Join</button>
+    <div className="room-container">
+      <div className="room-card">
+        <h1 className="room-title">CodeCollab Rooms</h1>
+        <p className="room-subtitle">Create a new room or join an existing one</p>
+
+        <button className="create-btn" onClick={handleCreateRoom}>
+          🚀 Create New Room
+        </button>
+
+        <div className="divider">OR</div>
+
+        <input
+          className="room-input"
+          placeholder="Enter Room Code"
+          value={roomId}
+          onChange={(e) => setRoomId(e.target.value)}
+        />
+
+        <button className="join-btn" onClick={joinRoom}>
+          Join Room
+        </button>
+      </div>
     </div>
   );
 }

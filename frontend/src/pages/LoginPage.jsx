@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { loginUser, registerUser } from "../api/authApi";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -10,23 +11,53 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const res = await loginUser({ username, password });
-    login(res.data);
-    navigate("/rooms");
+    try {
+      const res = await loginUser({ username, password });
+      login(res.data);
+      navigate("/rooms");
+    } catch (err) {
+      alert("Invalid credentials");
+    }
   };
 
   const handleRegister = async () => {
-    await registerUser({ username, password });
-    alert("Registered! Now login.");
+    try {
+      await registerUser({ username, password });
+      alert("Registered successfully! Now login.");
+    } catch (err) {
+      alert("Registration failed");
+    }
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>CodeCollab Login</h2>
-      <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} /><br/><br/>
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} /><br/><br/>
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={handleRegister}>Register</button>
+    <div className="login-container">
+      <div className="login-card">
+        <h1 className="logo">CodeCollab</h1>
+        <p className="subtitle">Real-Time Collaborative Code Editor</p>
+
+        <input
+          className="input-field"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <input
+          type="password"
+          className="input-field"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="login-btn" onClick={handleLogin}>
+          Login
+        </button>
+
+        <button className="register-btn" onClick={handleRegister}>
+          Register
+        </button>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CodeEditor from "../components/CodeEditor";
 import { connectSocket, sendCodeUpdate } from "../websocket/socketClient";
+import "./EditorPage.css";
 
 export default function EditorPage() {
   const { roomId } = useParams();
@@ -26,9 +27,15 @@ export default function EditorPage() {
   };
 
   return (
-    <div>
-      <h3>Room: {roomId}</h3>
-      <CodeEditor code={code} onChange={handleChange} />
+    <div className="editor-wrapper">
+      <div className="editor-header">
+        <h2>CodeCollab</h2>
+        <span className="room-badge">Room: {roomId}</span>
+      </div>
+
+      <div className="editor-body">
+        <CodeEditor code={code} onChange={handleChange} />
+      </div>
     </div>
   );
 }

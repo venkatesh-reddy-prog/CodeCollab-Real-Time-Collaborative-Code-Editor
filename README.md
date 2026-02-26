@@ -1,3 +1,5 @@
+![CodeCollab Banner](docs/screenshots/editor.png)
+
 # 🚀 CodeCollab – Real-Time Collaborative Code Editor
 
 CodeCollab is a full-stack real-time collaborative code editor that allows multiple users to join the same room and edit code simultaneously, similar to Google Docs but for programming.

@@ -16,7 +16,7 @@ server:
   port: ${PORT:8080}
 
 jwt:
-  secret: codecollab-secret-key
+  secret: ${JWT_SECRET:codecollabsecretkeythatisatleast256bitslong1234567890abcdef}
   expiration: 86400000
 
 

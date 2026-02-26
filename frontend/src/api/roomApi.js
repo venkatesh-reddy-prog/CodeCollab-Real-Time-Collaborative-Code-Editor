@@ -17,6 +17,3 @@ export const createRoom = () => {
 export const getRoom = (roomCode) => {
   return axios.get(`${API}/${roomCode}`, getAuthHeader());
 };
-```
-
-T

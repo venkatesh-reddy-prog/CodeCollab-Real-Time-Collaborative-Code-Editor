@@ -1,4 +1,5 @@
 import { Client } from "@stomp/stompjs";
+import SockJS from "sockjs-client";
 
 let stompClient = null;
 
@@ -8,7 +9,7 @@ export const connectSocket = (roomId, onMessageReceived) => {
   }
 
   stompClient = new Client({
-    brokerURL: `${process.env.REACT_APP_WS_URL}/ws/websocket`,
+    webSocketFactory: () => new SockJS(`${process.env.REACT_APP_WS_URL}/ws`),
     reconnectDelay: 5000,
     onConnect: () => {
       console.log("✅ WebSocket connected, subscribing to room:", roomId);
@@ -30,7 +31,6 @@ export const connectSocket = (roomId, onMessageReceived) => {
 
 export const sendCodeUpdate = (message) => {
   if (stompClient && stompClient.connected) {
-    console.log("📤 Sending update:", message);
     stompClient.publish({
       destination: "/app/edit",
       body: JSON.stringify(message),

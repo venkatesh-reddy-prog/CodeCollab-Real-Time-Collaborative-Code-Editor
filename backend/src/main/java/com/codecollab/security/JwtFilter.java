@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class JwtFilter extends GenericFilter {
+public class JwtFilter implements Filter {
 
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
@@ -21,9 +21,10 @@ public class JwtFilter extends GenericFilter {
             throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
+        String path = req.getServletPath();
 
-        // ⭐ VERY IMPORTANT: Allow preflight requests
-        if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
+        // 🔥 Skip JWT validation for public endpoints
+        if (path.startsWith("/api/auth") || path.equals("/health") || "OPTIONS".equalsIgnoreCase(req.getMethod())) {
             chain.doFilter(request, response);
             return;
         }

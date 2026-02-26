@@ -12,7 +12,16 @@ This project demonstrates real-time WebSocket communication, full-stack deployme
 * **Backend:** https://codecollab-backend-tvwl.onrender.com
 
 ---
+## 📸 Screenshots
 
+### 🔐 Login Page
+![Login Page](docs/screenshots/login.jpeg)
+
+### 🏠 Room Page
+![Room Page](docs/screenshots/rooms.jpeg)
+
+### 🧑‍💻 Collaborative Editor
+![Editor Page](docs/screenshots/editor.jpeg)
 ## 📌 Features
 
 * 🧑‍💻 Real-time collaborative code editing

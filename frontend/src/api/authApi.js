@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API = "http://localhost:8080/api/auth";  // add /api/
+// Use environment variable in production, fallback to localhost for dev
+const BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+const API = `${BASE_URL}/api/auth`;
 
 export const registerUser = (user) => {
   return axios.post(`${API}/register`, user);

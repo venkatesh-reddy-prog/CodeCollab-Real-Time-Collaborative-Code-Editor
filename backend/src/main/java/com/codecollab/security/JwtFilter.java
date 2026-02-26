@@ -21,6 +21,17 @@ public class JwtFilter extends GenericFilter {
             throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
+        String path = req.getRequestURI();
+
+        // 🔥 Skip JWT validation for public endpoints
+        if (path.equals("/") ||
+            path.equals("/health") ||
+            path.startsWith("/api/auth") ||
+            path.startsWith("/ws")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
         String authHeader = req.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {

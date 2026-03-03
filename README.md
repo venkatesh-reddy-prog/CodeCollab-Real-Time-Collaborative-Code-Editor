@@ -11,6 +11,9 @@ This project demonstrates real-time WebSocket communication, full-stack deployme
 * **Frontend:** https://code-collab-real-time-collaborative.vercel.app
 * **Backend:** https://codecollab-backend-tvwl.onrender.com
 
+## 🔌 WebSocket Architecture
+
+![CodeCollab Architecture](docs/screenshots/CodeCollab_Architecture.png)
 ---
 ## 📸 Screenshots
 
@@ -96,14 +99,6 @@ codecollab/
 6. Editor content syncs instantly across all clients.
 
 ---
-
-## 🔌 WebSocket Architecture
-
----
-
-## 🔌 WebSocket Architecture
-
-![CodeCollab Architecture](docs/screenshots/CodeCollab_Architecture.png)
 
 ## 🛠️ Environment Variables
 

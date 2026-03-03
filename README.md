@@ -99,17 +99,11 @@ codecollab/
 
 ## 🔌 WebSocket Architecture
 
-```
-React Client
-   ↓ (SockJS + STOMP)
-Spring Boot WebSocket Endpoint (/ws)
-   ↓
-Message Broker (/topic)
-   ↓
-All Connected Clients in Room
-```
-
 ---
+
+## 🔌 WebSocket Architecture
+
+![CodeCollab Architecture](docs/screenshots/CodeCollab_Architecture.png)
 
 ## 🛠️ Environment Variables
 
